@@ -1,0 +1,72 @@
+html {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  font-size: 16px !important; // set for rem base
+}
+
+* {
+  // outline: 1px solid rgba($c-main, 0.3);
+  // scrollbar-color: #87ceeb #ff5621;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+
+  // Noto Sans TC 中文字體
+  // Nunito 英文字體
+  font-family: 'Nunito Sans', 'Noto Sans TC', sans-serif, 'PingFang TC', Microsoft JhengHei, 微軟正黑體, Arial,
+    Helvetica, sans-serif;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+// 阻擋下拉使瀏覽器重整
+.prevent-scroll-reload {
+  overscroll-behavior-y: contain;
+}
+
+.wrap {
+  width: 100%;
+
+  &__content {
+    @include flex();
+    flex-wrap: wrap;
+    margin: 0 -20px;
+
+    &__box {
+      width: 25%;
+      @include padding(20px);
+
+      
+    }
+  }
+
+  &__inline {
+    > div {
+      width: 25%;
+      display: inline-block
+    }
+  }
+}
+
+.text {
+  @include flex();
+}
+
+.wrap-comps {
+  @include flex();
+
+  &__comp {
+    & + & {
+      margin-left: 10px;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.normal-text {
+  text-align: justify;
+  text-align-last: left;
+  word-break: break-all;
+  @include font-normal();
+  
+
+  &--flex {
+    @include flex();
+  }
+
+  &__title {
+    margin-top: 30px;
+  }
+
+  &__bold {
+    font-weight: 500;
+  }
+
+  &__center {
+    text-align: center;
+  }
+
+
+  &__underline {
+    text-decoration: underline;
+    
+  }
+
+  &__pointer {
+    cursor: pointer;
+  }
+
+
+  // temp
+  &__margin-top {
+    margin-top: 30px;
+  }
+
+  &__last-justify {
+    text-align-last: center;
+  }
+
+  &__important {
+    @include font-important();
+
+  }
+
+  
+}
+
+.normal-text-small {
+  @include font-normal($c-main, 14);
+}

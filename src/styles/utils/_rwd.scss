@@ -1,0 +1,74 @@
+// init
+$init: 320px;
+$init__content: 280px;
+// mobile
+$mobile: 576px;
+$mobile__content: 90%;
+// portrait
+$portrait: 768px;
+$portrait__content: 90%;
+// tablet
+$tablet: 1024px;
+$tablet__content: 90%;
+// sm-pc
+$sm-pc: 1440px;
+$sm-pc__content: 1366px;
+// pc
+$pc: 1600px;
+$pc__content: 1366px;
+// lg-pc
+$lg-pc: 1920px;
+$lg-pc__content: 1600px;
+
+.g-content {
+  box-sizing: border-box;
+  padding: 0 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: $init) {
+  .g-content {
+    margin: 0 auto;
+    padding: 0 20px;
+    display: block;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: $mobile) {
+  .g-content {
+    padding: 0;
+    max-width: $mobile__content;
+  }
+}
+
+@media screen and (min-width: $portrait) {
+  .g-content {
+    max-width: $portrait__content;
+  }
+}
+
+@media screen and (min-width: $tablet) {
+  .g-content {
+    max-width: $tablet__content;
+  }
+}
+
+@media screen and (min-width: $sm-pc) {
+  .g-content {
+    max-width: $sm-pc__content;
+  }
+}
+
+@media screen and (min-width: $pc) {
+  .g-content {
+    max-width: $pc__content;
+  }
+}
+
+@media screen and (min-width: $lg-pc) {
+  .g-content {
+    max-width: $lg-pc__content;
+  }
+}

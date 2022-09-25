@@ -1,0 +1,175 @@
+// 字
+// 參數 顏色, 字體大小, 字體粗細, 字距
+@mixin font-style($c: #000, $fs: 16, $fw: 400, $ls: normal, $lh: normal) {
+  color: $c;
+  // font-size: calc($fs * 10 / 100) + rem;
+  font-size: calc(#{$fs}rem / 16);
+  font-weight: $fw;
+  letter-spacing: $ls;
+  line-height: $lh;
+}
+
+@mixin max-width($w, $isCenter: true) {
+  width: 100%;
+  max-width: $w + px;
+
+  @if $isCenter == true {
+    margin: 0 auto;
+  }
+}
+
+@mixin font-size($fs: 16) {
+  // font-size: calc($fs * 10 / 100) + rem;
+  font-size: calc($fs / 16) + rem;
+}
+
+@mixin padding($padding) {
+  box-sizing: border-box;
+  padding: $padding;
+}
+
+@mixin flex($js: flex-start, $ai: center, $fd: row) {
+  display: flex;
+  justify-content: $js;
+  align-items: $ai;
+  flex-direction: $fd;
+}
+
+@mixin inline-flex($js: flex-start, $ai: center, $fd: row) {
+  display: inline-flex;
+  justify-content: $js;
+  align-items: $ai;
+  flex-direction: $fd;
+}
+
+@mixin position($type: center, $tb: 0px, $lr: 0px) {
+  @if $type == center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @if $type == tl {
+    position: absolute;
+    top: $tb;
+    left: $lr;
+  }
+
+  @if $type == tr {
+    position: absolute;
+    top: $tb;
+    right: $lr;
+  }
+
+  @if $type == bl {
+    position: absolute;
+    bottom: $tb;
+    left: $lr;
+  }
+
+  @if $type == br {
+    position: absolute;
+    bottom: $tb;
+    right: $lr;
+  }
+}
+
+@mixin cus-radius($tl, $tr, $br, $bl) {
+  border-top-left-radius: $tl;
+  border-top-right-radius: $tr;
+  border-bottom-right-radius: $br;
+  border-bottom-left-radius: $bl;
+}
+
+// 刪除button 所有預設
+@mixin set-btn-default() {
+  border: 0px transparent;
+  outline: 0px transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@mixin circle($wh: 10px, $r: 50%) {
+  width: $wh;
+  height: $wh;
+  border-radius: $r;
+}
+
+// extends 無法用在 media query 中，所以這邊再寫一個  mixins，是一模一樣的東西
+@mixin bg-gradient() {
+  background: transparent linear-gradient(180deg, $c-gradient1 0%, $c-gradient2 50%, $c-gradient3 100%) 0% 0% no-repeat
+    padding-box;
+}
+
+@mixin bg-gradient-90deg() {
+  background: transparent linear-gradient(90deg, $c-gradient1 0%, $c-gradient2 50%, $c-gradient3 100%) 0% 0% no-repeat
+    padding-box;
+}
+
+// 行數省略
+@mixin word-ellipsis($row: 1) {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $row;
+  -webkit-box-orient: vertical;
+}
+
+// 行數復原
+@mixin word-ellipsis-unlimited() {
+  overflow: visible;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  -webkit-line-clamp: none;
+  -webkit-box-orient: inline-axis;
+}
+
+@mixin h100() {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+@mixin min-h100() {
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+// safari 不支持 flex: 1 簡寫
+@mixin flex1() {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+}
+
+
+// 圖片銳利化
+@mixin optimizeImage() {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+
+}
+
+// 網格背景
+@mixin frameBg() {
+background-image: linear-gradient($c-grey8, 1px, transparent 0),
+    linear-gradient(90deg, $c-grey8, 1px, transparent 0);
+  background-size: 20% 100%;
+}
+
+@mixin font-normal($c: $c-main, $fs: 16, $fw: 400, $ls: 1.6px, $lh: 28px) {
+  @include font-style($c, $fs, $fw, $ls, $lh);
+}
+
+@mixin font-important($c: $c-main, $fs: 20, $fw: 500, $ls: 2px, $lh: 28px) {
+  @include font-style($c, $fs, $fw, $ls, $lh);
+}
+
+
+@mixin form-font() {
+  @include font-style($c-form-basic, 14, 400, 1px, 18px);
+}
