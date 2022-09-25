@@ -6,3 +6,4 @@
 - [ ] vue-router
 - [ ] store using by pinia
 - [ ] eslint with typescript
+- [ ] scss
