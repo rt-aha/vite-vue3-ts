@@ -1,14 +1,15 @@
-import { fileURLToPath, URL } from 'url';
+import { URL, fileURLToPath } from 'url';
 import vue from '@vitejs/plugin-vue';
-import { defineConfig, ConfigEnv, loadEnv, UserConfigExport } from 'vite';
+import type { ConfigEnv, UserConfigExport } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 
 // https://vitejs.dev/config/
 export default (configEnv: ConfigEnv): UserConfigExport => {
-  const { mode }: { mode:string} = configEnv;
+  const { mode }: { mode: string } = configEnv;
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   return defineConfig({
-    plugins: [ vue()],
+    plugins: [vue()],
     server: {
       port: 7201,
     },
@@ -17,7 +18,6 @@ export default (configEnv: ConfigEnv): UserConfigExport => {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
     },
-    //css预处理
     css: {
       preprocessorOptions: {
         scss: {

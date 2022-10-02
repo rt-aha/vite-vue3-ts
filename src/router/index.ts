@@ -1,7 +1,11 @@
-import { createRouter, createWebHistory, Router } from 'vue-router';
-import series from '@/router/pages/series';
+import type { Router } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
-// console.log('routes..', pages);
+const modules = import.meta.glob('./pages/*.ts', { eager: true });
+const allRoutes = [];
+for (const path in modules) {
+  allRoutes.push(modules[path].default);
+}
 
 const router: Router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,12 +15,12 @@ const router: Router = createRouter({
       name: 'home',
       component: () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue'),
     },
-    ...series,
+    ...allRoutes,
   ],
 });
 
 router.beforeEach((to, from, next) => {
-  const scrollEle: HTMLElement | null  = document.querySelector('#app');
+  const scrollEle: HTMLElement | null = document.querySelector('#app');
   if (scrollEle) {
     scrollEle.scrollTo({
       top: 0,

@@ -11,14 +11,12 @@ const children = [
   },
 ];
 
-const routes = [
-  {
-    path: '/series',
-    name: 'series',
-    component: () => import(/* webpackChunkName: "Baselayout" */ '@/layout/BaseLayout.vue'),
-    children: addMeta(children, 'category', 'series'),
-  },
-];
+const routes = {
+  path: '/series',
+  name: 'series',
+  component: () => import(/* webpackChunkName: "Baselayout" */ '@/layout/BaseLayout.vue'),
+  children: addMeta(children, 'category', 'series'),
+};
 
 export default routes;
 export { children };

@@ -1,17 +1,16 @@
 <template>
   <div class="v-home">
     home
-    <p>deviceType value: {{deviceType}}</p>
+    <p>deviceType value: {{ deviceType }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useSiteStore } from '@/stores/site'
+import { useStore } from '@/stores';
 
-const siteStore = useSiteStore();
-
-const deviceType = computed(() => siteStore.deviceType)
+const siteStore = useStore.site();
+const deviceType = computed(() => siteStore.deviceType);
 
 siteStore.setDeviceType();
 </script>
