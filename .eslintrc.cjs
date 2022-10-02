@@ -1,5 +1,4 @@
 /* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   extends: '@antfu',
@@ -7,7 +6,7 @@ module.exports = {
     // common
     'semi': ['warn', 'always'],
     '@typescript-eslint/semi': ['warn', 'always'],
-    'curly': ['off', 'always'],
+    'curly': ['warn', 'all'],
 
     // vue
     'vue/component-tags-order': ['error', {
